@@ -20,8 +20,8 @@
 
 /* Begin PBXFileReference section */
 		3812077248B8F97A97DAD618 /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
-		5A0843141E52895500F6D7C0 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessToken.swift; path = Twitter/AccessToken.swift; sourceTree = SOURCE_ROOT; };
-		5A613D381E5026B70099A286 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Twitter/User.swift; sourceTree = SOURCE_ROOT; };
+		5A0843141E52895500F6D7C0 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		5A613D381E5026B70099A286 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5ADAF2F91E4AC34A000D8DC6 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ADAF2FC1E4AC34A000D8DC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ADAF3011E4AC34A000D8DC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,8 +84,8 @@
 		5ADAF2FB1E4AC34A000D8DC6 /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
-				5ADAF3131E4AC896000D8DC6 /* Network */,
 				5ADAF30F1E4AC7E5000D8DC6 /* Models */,
+				5ADAF3131E4AC896000D8DC6 /* Network */,
 				5ADAF30E1E4AC7DA000D8DC6 /* ViewControllers */,
 				5ADAF3101E4AC7EB000D8DC6 /* Views */,
 				5ADAF2FC1E4AC34A000D8DC6 /* AppDelegate.swift */,
@@ -108,8 +108,8 @@
 		5ADAF30F1E4AC7E5000D8DC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5A613D381E5026B70099A286 /* User.swift */,
 				5A0843141E52895500F6D7C0 /* AccessToken.swift */,
+				5A613D381E5026B70099A286 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -126,7 +126,7 @@
 			children = (
 				5ADAF3141E4AC961000D8DC6 /* TwitterClient.swift */,
 			);
-			name = Network;
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
