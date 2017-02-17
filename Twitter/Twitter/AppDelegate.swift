@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 print(user.screenName!)
                 let storybopard = UIStoryboard(name: "Main", bundle: nil)
-                let nc = storybopard.instantiateViewController(withIdentifier: "TweetVC")
-                window?.rootViewController = nc
+                let navigationVC = storybopard.instantiateViewController(withIdentifier: "HomeNavigationVC") as! UINavigationController
+                //let nc = storybopard.instantiateViewController(withIdentifier: "TweetVC")
+                window?.rootViewController = navigationVC
             }
         }
         return true

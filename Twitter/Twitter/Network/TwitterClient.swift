@@ -19,6 +19,7 @@ struct URLs {
     static let callbackURL = "twitterreview://oauth"
     static let authURL = URLs.baseURL + "/oauth/authorize?oauth_token="
     static let verifyCredentials = "1.1/account/verify_credentials.json"
+    static let homeTimeline = "1.1/statuses/home_timeline.json"
 }
 
 class TwitterClient: BDBOAuth1SessionManager {
@@ -71,6 +72,21 @@ class TwitterClient: BDBOAuth1SessionManager {
             success(user)
         }, failure: {(task, error) in
             self.loginFailure!(error)
+        })
+    }
+    //
+    func getTweets (success: @escaping([Tweet]) -> Void) {
+        get(URLs.homeTimeline, parameters: nil, progress: nil, success: {(task, response) in
+            print(response!)
+            let dataArray = response as! [NSDictionary]
+            var tweets:[Tweet] = [Tweet]()
+            for data in dataArray {
+                let tweet = Tweet(data: data)
+                tweets.append(tweet)
+            }
+            success(tweets)
+        }, failure: {(task, error) in
+            print(error)
         })
     }
 }
