@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3W-4D-LH7">
-                                <rect key="frame" x="77" y="354.5" width="220" height="36"/>
+                                <rect key="frame" x="77" y="368.5" width="220" height="36"/>
                                 <color key="backgroundColor" red="0.33333333329999998" green="0.68235294120000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="2eh-LM-tUh"/>
@@ -37,10 +37,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_blue1" translatesAutoresizingMaskIntoConstraints="NO" id="P8L-Ub-oAt">
-                                <rect key="frame" x="142.5" y="228.5" width="90" height="90"/>
+                                <rect key="frame" x="152.5" y="178.5" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="q6h-k5-9v4"/>
-                                    <constraint firstAttribute="height" constant="90" id="x3e-7l-yQR"/>
+                                    <constraint firstAttribute="width" constant="70" id="q6h-k5-9v4"/>
+                                    <constraint firstAttribute="height" constant="70" id="x3e-7l-yQR"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -48,8 +48,8 @@
                         <constraints>
                             <constraint firstItem="P8L-Ub-oAt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7FV-ae-MHr"/>
                             <constraint firstItem="K3W-4D-LH7" firstAttribute="centerX" secondItem="P8L-Ub-oAt" secondAttribute="centerX" id="A4c-8R-RLV"/>
-                            <constraint firstItem="P8L-Ub-oAt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-60" id="OCz-wo-mya"/>
-                            <constraint firstItem="K3W-4D-LH7" firstAttribute="top" secondItem="P8L-Ub-oAt" secondAttribute="bottom" constant="36" id="hay-Rh-gq4"/>
+                            <constraint firstItem="P8L-Ub-oAt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-120" id="OCz-wo-mya"/>
+                            <constraint firstItem="K3W-4D-LH7" firstAttribute="top" secondItem="P8L-Ub-oAt" secondAttribute="bottom" constant="120" id="hay-Rh-gq4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -81,7 +81,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="306"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vzz-ge-URy" id="0Ha-6K-A53">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="306"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="ErM-BL-hu5">
@@ -205,7 +205,7 @@
                                         <rect key="frame" x="0.0" y="334" width="375" height="294"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yOq-BM-QVp" id="qV5-pd-toT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="293"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="294"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.38431372549999998" green="0.61568627450000002" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -214,7 +214,7 @@
                                         <rect key="frame" x="0.0" y="628" width="375" height="311"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dZc-MN-zgP" id="dOu-W5-ib8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="311"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,7 +240,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_blue1" translatesAutoresizingMaskIntoConstraints="NO" id="nsh-jR-hIr">
-                                    <rect key="frame" x="61" y="2.5" width="28" height="28"/>
+                                    <rect key="frame" x="61" y="3" width="28" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="28" id="dlL-M3-5FL"/>
                                         <constraint firstAttribute="width" constant="28" id="oyU-pV-38m"/>
@@ -257,7 +257,7 @@
                             <color key="tintColor" red="0.33333333333333331" green="0.67843137254901964" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="tweetAction:" destination="rrR-Mu-Mpe" id="FZE-1p-hX5"/>
-                                <segue destination="uob-bx-lro" kind="show" id="N8N-mw-vJj"/>
+                                <segue destination="uob-bx-lro" kind="show" identifier="NewTweetSegue" id="N8N-mw-vJj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -272,7 +272,7 @@
         <!--New Tweet View Controller-->
         <scene sceneID="8MD-z2-Ad2">
             <objects>
-                <viewController id="uob-bx-lro" customClass="NewTweetViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="uob-bx-lro" customClass="NewTweetViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gmL-qs-Xne"/>
                         <viewControllerLayoutGuide type="bottom" id="TmC-Xr-Otu"/>
@@ -282,20 +282,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What 's happening?" translatesAutoresizingMaskIntoConstraints="NO" id="laa-zl-la2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="499"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="509"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OS-bT-DDN">
-                                <rect key="frame" x="0.0" y="563" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="573" width="375" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghe-DU-iER">
-                                        <rect key="frame" x="291" y="13" width="72" height="34"/>
+                                        <rect key="frame" x="291" y="10" width="72" height="30"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.68235294120000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="H3X-hY-kZ8"/>
-                                            <constraint firstAttribute="height" constant="34" id="cfs-Tz-qF3"/>
+                                            <constraint firstAttribute="height" constant="30" id="cfs-Tz-qF3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <state key="normal" title="Tweet">
@@ -306,19 +307,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkU-Pw-mYF">
-                                        <rect key="frame" x="251" y="19.5" width="28" height="21"/>
+                                        <rect key="frame" x="251" y="14.5" width="28" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="qkU-Pw-mYF" firstAttribute="centerY" secondItem="Ghe-DU-iER" secondAttribute="centerY" id="9lY-Xv-YZv"/>
                                     <constraint firstItem="Ghe-DU-iER" firstAttribute="leading" secondItem="qkU-Pw-mYF" secondAttribute="trailing" constant="12" id="EAp-bu-xJD"/>
                                     <constraint firstItem="Ghe-DU-iER" firstAttribute="centerY" secondItem="0OS-bT-DDN" secondAttribute="centerY" id="J6K-sE-wSt"/>
                                     <constraint firstAttribute="trailing" secondItem="Ghe-DU-iER" secondAttribute="trailing" constant="12" id="UpN-ie-DXx"/>
-                                    <constraint firstAttribute="height" constant="60" id="nco-k2-fnz"/>
+                                    <constraint firstAttribute="height" constant="50" id="nco-k2-fnz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -365,7 +366,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="5Pz-Qb-ktY" id="DYz-Z8-6ph"/>
-                        <outlet property="characterCount" destination="qkU-Pw-mYF" id="5e7-TZ-fFT"/>
+                        <outlet property="characterCountLabel" destination="qkU-Pw-mYF" id="atk-AK-8HM"/>
                         <outlet property="contentTextView" destination="laa-zl-la2" id="R5M-rC-M2R"/>
                         <outlet property="profileImage" destination="JI2-zY-47y" id="T7o-BV-9Oh"/>
                         <outlet property="toolsView" destination="0OS-bT-DDN" id="iob-Nk-FsQ"/>

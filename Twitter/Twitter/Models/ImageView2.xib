@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yc5-eE-lSM">
                     <rect key="frame" x="0.0" y="0.0" width="283" height="150"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet1" translatesAutoresizingMaskIntoConstraints="NO" id="Vj1-iq-0Rj">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet1" translatesAutoresizingMaskIntoConstraints="NO" id="Vj1-iq-0Rj">
                             <rect key="frame" x="0.0" y="0.0" width="140.5" height="150"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet2" translatesAutoresizingMaskIntoConstraints="NO" id="BGe-mQ-YnL">

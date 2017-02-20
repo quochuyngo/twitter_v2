@@ -18,7 +18,7 @@
                 <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8yk-f9-DxY">
                     <rect key="frame" x="0.0" y="0.0" width="283" height="150"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ri" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-Jk-I5f">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-Jk-I5f">
                             <rect key="frame" x="0.0" y="0.0" width="283" height="150"/>
                         </imageView>
                     </subviews>
@@ -48,6 +48,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ri" width="960" height="720"/>
+        <image name="loading" width="499" height="250"/>
     </resources>
 </document>

@@ -36,9 +36,10 @@ class TweetCell: UITableViewCell {
             screenNameLabel.text = "@" + (tweet.user?.screenName)!
             nameLabel.text = tweet.user?.name
             contentLabel.text = tweet.content
+            createdAtLabel.text = tweet.createAtString
             setRetweet()
             setFavorite()
-            setMedia(mediaUrls: tweet.mediaUrls)
+            setMedia(mediaUrls: (tweet.media?.mediaUrls)!)
             
         }
     }
@@ -54,33 +55,33 @@ class TweetCell: UITableViewCell {
         case 1:
             mediaContentView.isHidden = false
             replyConstraint.constant = 168
-            if mediaContentView.subviews.count == 0 {
+            //if mediaContentView.subviews.count == 0 {
                 let imageView = Bundle.main.loadNibNamed("ImageView1", owner: self, options: nil)?.first as! ImageView1
                 imageView.imageView.setImageWith(URL(string:mediaUrls[0])!)
                 mediaContentView.addSubview(imageView)
-            }
+            //}
             break
         case 2:
             mediaContentView.isHidden = false
             replyConstraint.constant = 168
-            if mediaContentView.subviews.count == 0 {
+            //if mediaContentView.subviews.count == 0 {
                 let imageView = Bundle.main.loadNibNamed("ImageView2", owner: self, options: nil)?.first as! ImageView2
                 imageView.imageView1.setImageWith(URL(string:mediaUrls[0])!)
                 imageView.imageView2.setImageWith(URL(string:mediaUrls[1])!)
                 mediaContentView.addSubview(imageView)
-            }
+            //}
             break
         case 3:
             mediaContentView.isHidden = false
             replyConstraint.constant = 168
-            if mediaContentView.subviews.count == 0 {
+            //if mediaContentView.subviews.count == 0 {
                 mediaContentView.isHidden = false
                 let imageView = Bundle.main.loadNibNamed("ImageView3", owner: self, options: nil)?.first as! ImageView3
                 imageView.imageView1.setImageWith(URL(string:mediaUrls[0])!)
                 imageView.imageView2.setImageWith(URL(string:mediaUrls[1])!)
                 imageView.imageView3.setImageWith(URL(string:mediaUrls[2])!)
                 mediaContentView.addSubview(imageView)
-            }
+            //}
             break
         default:
             mediaContentView.isHidden = true
@@ -123,26 +124,44 @@ class TweetCell: UITableViewCell {
         }
     }
     @IBAction func likeAction(_ sender: Any) {
+
         if tweet.favorited {
-            tweet.favorited = false
-            tweet.favoriteCount = tweet.favoriteCount - 1
+            TwitterClient.shareInstance.unlikeTweet(id: tweet.id!, success: {
+                (tweet) in
+                self.tweet.favoriteCount = tweet.favoriteCount
+                self.tweet.favorited = tweet.favorited
+                self.setFavorite()
+            })
         }
         else {
-            tweet.favorited = true
-            tweet.favoriteCount = tweet.favoriteCount + 1
+            TwitterClient.shareInstance.likeTweet(id:tweet.id!, success: {
+                (tweet) in
+                self.tweet.favoriteCount = tweet.favoriteCount
+                self.tweet.favorited = tweet.favorited
+                self.setFavorite()
+            })
         }
-        setFavorite()
+       
     }
+    
     @IBAction func retweetAction(_ sender: Any) {
         if tweet.retweeted {
-            tweet.retweeted = false
-            tweet.retweetCount = tweet.retweetCount - 1
+            TwitterClient.shareInstance.unretweet(id: tweet.id!, success: {
+                (tweet) in
+                self.tweet.retweeted = tweet.retweeted
+                self.tweet.replyCount = tweet.replyCount
+                self.setRetweet()
+            })
         }
+            
         else {
-            tweet.retweeted = true
-            tweet.retweetCount = tweet.retweetCount + 1
+            TwitterClient.shareInstance.retweet(id: tweet.id!, success: {
+                (tweet) in
+                self.tweet.retweeted = tweet.retweeted
+                self.tweet.retweetCount = tweet.retweetCount
+                self.setRetweet()
+            })
         }
-        setRetweet()
     }
     @IBAction func replyAction(_ sender: Any) {
         print("reply clicked")

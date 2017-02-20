@@ -9,9 +9,8 @@
 import AFNetworking
 import BDBOAuth1Manager
 
-let API_KEY = "xP5ncED0NhvByFYxQu0seLUwf"//"CSlvbipf1svqF2KTKx2f9hQ3W"
-let API_SECRET = "oA2xSASBMBtf4jS6PzKt1Vcgvb7RIZ7Y3isyV8usIlrqt4M7Zp"//"nobu0OxMQyLTuHt9jNkmJBPHnuMmZJotCRkpdGqHennLVO4lgG"
-
+let API_KEY = "8pheut7KeZ4uUk9f4Rgij0BhI"//"xP5ncED0NhvByFYxQu0seLUwf"
+let API_SECRET = "7Fly9qwg3XbjR80wmnwyFrS7wbVw6yGGSWjPFmdiWfKIkOCeAK"//"oA2xSASBMBtf4jS6PzKt1Vcgvb7RIZ7Y3isyV8usIlrqt4M7Zp"
 struct URLs {
     static let baseURL = "https://api.twitter.com"
     static let requestToken = "oauth/request_token"
@@ -20,6 +19,11 @@ struct URLs {
     static let authURL = URLs.baseURL + "/oauth/authorize?oauth_token="
     static let verifyCredentials = "1.1/account/verify_credentials.json"
     static let homeTimeline = "1.1/statuses/home_timeline.json"
+    static let createFavorite = "1.1/favorites/create.json"
+    static let destroyFavorite = "1.1/favorites/destroy.json"
+    static let retweet = "1.1/statuses/retweet/"
+    static let unretweet = "1.1/statuses/unretweet/"
+    static let updateTweet = "1.1/statuses/update.json"
 }
 
 class TwitterClient: BDBOAuth1SessionManager {
@@ -74,9 +78,14 @@ class TwitterClient: BDBOAuth1SessionManager {
             self.loginFailure!(error)
         })
     }
-    //
-    func getTweets (success: @escaping([Tweet]) -> Void) {
-        get(URLs.homeTimeline, parameters: nil, progress: nil, success: {(task, response) in
+
+    func getTweets (max_id:Int?, success: @escaping ([Tweet]) -> Void, failure: ((Error) -> Void)? = nil) {
+        var parameters = [String:AnyObject]()
+        if max_id != nil {
+            parameters["max_id"] = (max_id! - 1) as AnyObject?
+        }
+        
+        get(URLs.homeTimeline, parameters: parameters, progress: nil, success: {(task, response) in
             print(response!)
             let dataArray = response as! [NSDictionary]
             var tweets:[Tweet] = [Tweet]()
@@ -85,6 +94,70 @@ class TwitterClient: BDBOAuth1SessionManager {
                 tweets.append(tweet)
             }
             success(tweets)
+        }, failure: {(task, error) in
+            failure?(error)
+        })
+    }
+    
+    func likeTweet(id:Int!, success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
+        var parameters = [String:AnyObject]()
+        parameters["id"] = id as AnyObject?
+        
+        post(URLs.createFavorite, parameters: parameters, progress: nil, success: {(task, response) in
+            if let data = response {
+                let tweet = Tweet(data: data as! NSDictionary)
+                success(tweet)
+            }
+          
+        }, failure:{(task, error) in
+            failure?(error)
+        })
+    }
+    
+    func unlikeTweet(id:Int!,  success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
+        var parameters = [String:AnyObject]()
+        parameters["id"] = id as AnyObject?
+        
+        post(URLs.destroyFavorite, parameters: parameters, progress: nil, success: {(task, response) in
+            if let data = response {
+                let tweet = Tweet(data: data as! NSDictionary)
+                success(tweet)
+            }
+            
+        }, failure:{(task, error) in
+            failure?(error)
+        })
+    }
+    
+    func retweet(id:Int!,  success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
+        post(URLs.retweet + "\(id!).json", parameters: nil, progress: nil, success: {(task, response) in
+            if let data = response {
+                let tweet = Tweet(data: data as! NSDictionary)
+                success(tweet)
+            }
+        }, failure:{(task, error) in
+            print(error)
+        })
+    }
+    
+    func unretweet(id:Int!,  success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
+        post(URLs.unretweet + "\(id!).json", parameters: nil, progress: nil, success: {(task, response) in
+            if let data = response {
+                let tweet = Tweet(data: data as! NSDictionary)
+                success(tweet)
+            }
+        }, failure:{(task, error) in
+            print(error)
+        })
+    }
+    
+    func tweet(status:String!, success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
+        var parameters = [String:AnyObject]()
+        parameters["status"] = status as AnyObject?
+        
+        post(URLs.updateTweet, parameters: parameters, progress: nil, success: {(task, response) in
+            let tweet = Tweet(data: response as! NSDictionary)
+            success(tweet)
         }, failure: {(task, error) in
             print(error)
         })

@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
        if let accessToken = AccessToken.currentToken {
+            TwitterClient.shareInstance.requestSerializer.saveAccessToken(accessToken)
             if let user = User.currentUser {
                 
                 print(user.screenName!)
