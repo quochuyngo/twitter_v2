@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
         TwitterClient.shareInstance.login(success: {
             TwitterClient.shareInstance.getUserInfo(success: { (user) in
                 User.currentUser = user
-                print(user.screenName!)
                 self.performSegue(withIdentifier: "timeLineSegue", sender: nil)
             })
             

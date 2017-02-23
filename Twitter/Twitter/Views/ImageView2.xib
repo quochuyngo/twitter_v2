@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageView2" customModule="Twitter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="283" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yc5-eE-lSM">
+                    <rect key="frame" x="0.0" y="0.0" width="283" height="150"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet1" translatesAutoresizingMaskIntoConstraints="NO" id="Vj1-iq-0Rj">
+                            <rect key="frame" x="0.0" y="0.0" width="140.5" height="150"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet2" translatesAutoresizingMaskIntoConstraints="NO" id="BGe-mQ-YnL">
+                            <rect key="frame" x="142.5" y="0.0" width="140.5" height="150"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Vj1-iq-0Rj" firstAttribute="width" secondItem="yc5-eE-lSM" secondAttribute="width" multiplier="1:2" constant="-1" id="Kax-zR-ECv"/>
+                        <constraint firstItem="Vj1-iq-0Rj" firstAttribute="top" secondItem="yc5-eE-lSM" secondAttribute="top" id="RQ2-88-tqQ"/>
+                        <constraint firstItem="BGe-mQ-YnL" firstAttribute="top" secondItem="yc5-eE-lSM" secondAttribute="top" id="YX0-3i-d5V"/>
+                        <constraint firstAttribute="bottom" secondItem="BGe-mQ-YnL" secondAttribute="bottom" id="ZfV-1L-WQP"/>
+                        <constraint firstItem="Vj1-iq-0Rj" firstAttribute="leading" secondItem="yc5-eE-lSM" secondAttribute="leading" id="bH1-Vb-rXQ"/>
+                        <constraint firstAttribute="trailing" secondItem="BGe-mQ-YnL" secondAttribute="trailing" id="l6Q-kD-nMC"/>
+                        <constraint firstAttribute="bottom" secondItem="Vj1-iq-0Rj" secondAttribute="bottom" id="pWE-Yy-bKk"/>
+                        <constraint firstItem="BGe-mQ-YnL" firstAttribute="width" secondItem="yc5-eE-lSM" secondAttribute="width" multiplier="1:2" constant="-1" id="qs9-bR-nsg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yc5-eE-lSM" secondAttribute="trailing" id="Chf-6x-BwT"/>
+                <constraint firstItem="yc5-eE-lSM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HrQ-NZ-RYy"/>
+                <constraint firstAttribute="bottom" secondItem="yc5-eE-lSM" secondAttribute="bottom" id="Vxk-Rv-Neh"/>
+                <constraint firstItem="yc5-eE-lSM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wOG-WV-xeA"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contentView" destination="yc5-eE-lSM" id="aYV-o7-zWr"/>
+                <outlet property="imageView1" destination="Vj1-iq-0Rj" id="ROT-kg-T4C"/>
+                <outlet property="imageView2" destination="BGe-mQ-YnL" id="MbL-tG-Kdl"/>
+            </connections>
+            <point key="canvasLocation" x="53.5" y="365"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cover_tweet1" width="1200" height="880"/>
+        <image name="cover_tweet2" width="1200" height="977"/>
+    </resources>
+</document>

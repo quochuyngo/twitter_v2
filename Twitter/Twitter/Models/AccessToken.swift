@@ -17,6 +17,7 @@ class AccessToken{
             if _currentToken == nil {
                 if let data = UserDefaults.standard.object(forKey: KEYs.accessToken) {
                     _currentToken = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? BDBOAuth1Credential
+                   
                     //return _currentToken
                 }
             }

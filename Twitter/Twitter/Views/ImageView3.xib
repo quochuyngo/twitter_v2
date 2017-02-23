@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageView3" customModule="Twitter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="283" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ui6-E1-XW3">
+                    <rect key="frame" x="0.0" y="0.0" width="283" height="160"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet" translatesAutoresizingMaskIntoConstraints="NO" id="nhN-4i-xyf">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="160"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet1" translatesAutoresizingMaskIntoConstraints="NO" id="Enu-VL-Iq6">
+                            <rect key="frame" x="190" y="0.0" width="92.5" height="79"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover_tweet2" translatesAutoresizingMaskIntoConstraints="NO" id="GbA-gK-YYi">
+                            <rect key="frame" x="189.5" y="81" width="93.5" height="79"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="nhN-4i-xyf" firstAttribute="width" secondItem="Ui6-E1-XW3" secondAttribute="width" multiplier="2:3" constant="-1" id="8NI-NS-n84"/>
+                        <constraint firstItem="Enu-VL-Iq6" firstAttribute="height" secondItem="Ui6-E1-XW3" secondAttribute="height" multiplier="1:2" constant="-1" id="9n9-do-tTQ"/>
+                        <constraint firstAttribute="bottom" secondItem="GbA-gK-YYi" secondAttribute="bottom" id="Dtt-O4-fY9"/>
+                        <constraint firstItem="Enu-VL-Iq6" firstAttribute="width" secondItem="Ui6-E1-XW3" secondAttribute="width" multiplier="1:3" constant="-2" id="J2E-NL-NZ7"/>
+                        <constraint firstAttribute="trailing" secondItem="Enu-VL-Iq6" secondAttribute="trailing" id="JZb-Bv-jq8"/>
+                        <constraint firstAttribute="trailing" secondItem="GbA-gK-YYi" secondAttribute="trailing" id="LNN-Iw-5kY"/>
+                        <constraint firstItem="Enu-VL-Iq6" firstAttribute="top" secondItem="Ui6-E1-XW3" secondAttribute="top" id="Q1D-wf-iff"/>
+                        <constraint firstAttribute="bottom" secondItem="nhN-4i-xyf" secondAttribute="bottom" id="aQP-dI-agc"/>
+                        <constraint firstItem="nhN-4i-xyf" firstAttribute="leading" secondItem="Ui6-E1-XW3" secondAttribute="leading" id="akM-2c-7Zj"/>
+                        <constraint firstItem="GbA-gK-YYi" firstAttribute="height" secondItem="Ui6-E1-XW3" secondAttribute="height" multiplier="1:2" constant="-1" id="els-YJ-bQa"/>
+                        <constraint firstItem="GbA-gK-YYi" firstAttribute="width" secondItem="Ui6-E1-XW3" secondAttribute="width" multiplier="1:3" constant="-1" id="fI7-xe-P2P"/>
+                        <constraint firstItem="nhN-4i-xyf" firstAttribute="top" secondItem="Ui6-E1-XW3" secondAttribute="top" id="t0z-p4-k6z"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ui6-E1-XW3" secondAttribute="trailing" id="AWs-rS-u9c"/>
+                <constraint firstItem="Ui6-E1-XW3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f9d-iy-lhw"/>
+                <constraint firstAttribute="bottom" secondItem="Ui6-E1-XW3" secondAttribute="bottom" id="pEg-QP-OVl"/>
+                <constraint firstItem="Ui6-E1-XW3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zYl-Cd-4Yc"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contentView" destination="Ui6-E1-XW3" id="WzO-2m-PFO"/>
+                <outlet property="imageView1" destination="nhN-4i-xyf" id="QxB-eE-hFF"/>
+                <outlet property="imageView2" destination="Enu-VL-Iq6" id="6lc-q8-V8W"/>
+                <outlet property="imageView3" destination="GbA-gK-YYi" id="0K3-WT-j83"/>
+            </connections>
+            <point key="canvasLocation" x="38.5" y="113"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cover_tweet" width="600" height="314"/>
+        <image name="cover_tweet1" width="1200" height="880"/>
+        <image name="cover_tweet2" width="1200" height="977"/>
+    </resources>
+</document>
