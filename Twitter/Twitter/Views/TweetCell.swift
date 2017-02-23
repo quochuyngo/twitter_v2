@@ -9,8 +9,15 @@
 import UIKit
 import AFNetworking
 
+protocol TweetCellDelegate {
+    func tweetCell(replyCell:TweetCell)
+    func tweetCell(replyCell:TweetCell, index:Int)
+}
+
 class TweetCell: UITableViewCell {
 
+    var delegate: TweetCellDelegate!
+    
     @IBOutlet weak var mediaContentView: UIView!
     
     @IBOutlet weak var createdAtLabel: UILabel!
@@ -40,7 +47,6 @@ class TweetCell: UITableViewCell {
             setRetweet()
             setFavorite()
             setMedia(mediaUrls: (tweet.media?.mediaUrls)!)
-            
         }
     }
     override func awakeFromNib() {
@@ -93,7 +99,6 @@ class TweetCell: UITableViewCell {
     func setFavorite() {
         if tweet.favorited {
             favoriteButton.setImage(UIImage(named: "ic_favorite_on"), for:.normal)
-            
         }
         else {
             favoriteButton.setImage(UIImage(named: "ic_favorite"), for:.normal)
@@ -164,6 +169,6 @@ class TweetCell: UITableViewCell {
         }
     }
     @IBAction func replyAction(_ sender: Any) {
-        print("reply clicked")
+        delegate.tweetCell(replyCell: self)
     }
 }

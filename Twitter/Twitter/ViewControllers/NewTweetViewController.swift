@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 protocol NewTweetViewControllerDelegate {
      func newTweet(tweet:Tweet)
+    func newTweet(replyTweet:Tweet, index:Int)
 }
 
 class NewTweetViewController: UIViewController {
@@ -23,9 +25,13 @@ class NewTweetViewController: UIViewController {
     }
     var isTweeted = false
     let limitCharacters = 140
+    var tweet:Tweet?
     
+    @IBOutlet weak var replyView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentTextView: UITextView!
+    
+    @IBOutlet weak var replyToLabel: UILabel!
     @IBOutlet weak var characterCountLabel: UILabel!
     @IBOutlet weak var tweetButton: UIButton!
     @IBOutlet weak var toolsView: UIView!
@@ -37,6 +43,17 @@ class NewTweetViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(NewTweetViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(NewTweetViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        if tweet != nil {
+            replyView.isHidden = false
+            let name = tweet?.user?.name!
+            replyToLabel.text = "Reply \(name!)"
+            let screenName = tweet?.user!.screenName!
+            contentTextView.text = "@ " + screenName!
+            tweetButton.setTitle("Reply", for: .normal)
+        }
+        else {
+            replyView.isHidden = true
+        }
     }
     
     func initView() {
@@ -81,14 +98,26 @@ class NewTweetViewController: UIViewController {
     
     @IBAction func tweetAction(_ sender: Any) {
         if !isTweeted {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             isTweeted = true
-            let ex = "Maybe%20he%27ll%20finally%20find%20his%20keys.%20%23peterfalk"
-            TwitterClient.shareInstance.tweet(status: contentTextView.text, success: {
-                (tweet) in
-                self.delegate.newTweet(tweet: tweet)
-                self.isTweeted = false
-                self.navigationController?.popViewController(animated: true)
-            })
+            if tweet != nil {
+                TwitterClient.shareInstance.tweet(status: contentTextView.text, replyId: tweet?.replyId, success: {
+                    (tweet) in
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.navigationController?.popViewController(animated: true)
+                    
+                })
+            }
+            else {
+                TwitterClient.shareInstance.tweet(status: contentTextView.text, replyId: nil, success: {
+                    (tweet) in
+                    self.delegate.newTweet(tweet: tweet)
+                    self.isTweeted = false
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+
         }
     }
 }

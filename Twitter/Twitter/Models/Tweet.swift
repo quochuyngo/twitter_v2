@@ -11,6 +11,7 @@ class Tweet {
     var user:User?
     var content:String = ""
     var id:Int?
+    var replyId:Int?
     var replyCount:Int?
     var retweetCount:Int = 0
     var favoriteCount:Int = 0
@@ -25,6 +26,7 @@ class Tweet {
     
     init(data: NSDictionary) {
         id = data["id"] as? Int
+        replyId = data["in_reply_to_user_id"] as? Int
         retweetCount = (data["retweet_count"] as? Int)!
         favoriteCount = (data["favorite_count"] as? Int)!
         retweeted = data["retweeted"] as! Bool

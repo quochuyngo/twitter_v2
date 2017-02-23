@@ -10,13 +10,13 @@ import UIKit
 import MBProgressHUD
 
 class HomeViewController: UIViewController {
-
+    
     var tweets:[Tweet]!
     var isMoreLoadingData:Bool = false
     var refreshControl:UIRefreshControl!
     var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var timelineTableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tweets = [Tweet]()
@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
         timelineTableView.insertSubview(refreshControl, at: 0)
         indicatorLoading()
     }
-
+    
     @IBAction func tweetAction(_ sender: Any) {
     }
     
@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         TwitterClient.shareInstance.getTweets(max_id: id, success: {
             (tweets) in
             if id == nil {
-                 self.tweets = tweets
+                self.tweets = tweets
             }
             else {
                 self.tweets.append(contentsOf: tweets)
@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
             self.isMoreLoadingData = false
             self.refreshControl.endRefreshing()
             self.timelineTableView.reloadData()
-           
+            
         })
     }
     
@@ -67,14 +67,26 @@ class HomeViewController: UIViewController {
         footerView.addSubview(indicatorView )
         timelineTableView.tableFooterView = footerView
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NewTweetSegue" {
             let vc = segue.destination as! NewTweetViewController
             vc.delegate = self
         }
+        else if segue.identifier == "ReplySegue" {
+            let data = sender as AnyObject
+            let vc = segue.destination as! NewTweetViewController
+            vc.tweet = data[0] as! Tweet
+            vc.delegate = self
+        }
+        else if segue.identifier == "TweetDetailSegue" {
+            let vc = segue.destination as! TweetDetailViewController
+            let data = sender as! AnyObject
+            let tweet = data[0] as! Tweet
+            vc.tweets.append(tweet)
+        }
     }
 }
-
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
@@ -83,7 +95,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetCell
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = [tweets[indexPath.row]]
+        performSegue(withIdentifier: "TweetDetailSegue", sender: data)
     }
 }
 
@@ -96,17 +114,31 @@ extension HomeViewController: UIScrollViewDelegate {
             if scrollView.contentOffset.y > scrollViewOffsetThreshold && timelineTableView.isDragging{
                 isMoreLoadingData = true
                 if tweets.count > 0 {
-                        getTweets(id: (tweets.last?.id))
+                    getTweets(id: (tweets.last?.id))
                 }
             }
         }
     }
-
 }
 
 extension HomeViewController: NewTweetViewControllerDelegate {
+    func newTweet(replyTweet: Tweet, index: Int) {
+        
+    }
+    
     func newTweet(tweet: Tweet) {
         tweets.insert(tweet, at: 0)
         timelineTableView.reloadData()
+    }
+}
+
+extension HomeViewController: TweetCellDelegate {
+    func tweetCell(replyCell: TweetCell) {
+        let data = [replyCell.tweet]
+        performSegue(withIdentifier: "ReplySegue", sender: data)
+    }
+    
+    func tweetCell(replyCell: TweetCell, index: Int) {
+        
     }
 }

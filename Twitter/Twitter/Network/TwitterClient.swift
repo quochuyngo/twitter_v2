@@ -51,6 +51,7 @@ class TwitterClient: BDBOAuth1SessionManager {
             if let requestToken = response {
                 let authURL = URL(string: URLs.authURL + (requestToken.token)!)
                 UIApplication.shared.open(authURL!, options: [:])
+
             }
         }, failure: { (error) in
             failure(error!)
@@ -151,10 +152,12 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func tweet(status:String!, success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
+    func tweet(status:String!, replyId:Int?, success: @escaping (Tweet) -> Void, failure: ((Error) -> Void)? = nil) {
         var parameters = [String:AnyObject]()
         parameters["status"] = status as AnyObject?
-        
+        if replyId != nil {
+            parameters["in_reply_to_status_id"] = replyId as AnyObject?
+        }
         post(URLs.updateTweet, parameters: parameters, progress: nil, success: {(task, response) in
             let tweet = Tweet(data: response as! NSDictionary)
             success(tweet)
